@@ -1,0 +1,35 @@
+{% extends 'registration/base.html' %}
+{% block title %} Registration |{{ block.super }} {% endblock %}
+{% block content %}
+
+<div class="student-register-page">
+
+        <div class="regiter-form-box">
+
+            <h3 class="reg-pag-h">Student Register</h3>
+
+
+
+            <form method="post" action="{% url 'registration' %}" class="regiter-group">
+                {% csrf_token %}
+                <input type="text" name="userid" class="input-field" placeholder="User ID" required>
+                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                <input type="email" name="email" class="input-field" placeholder="Email" required>
+
+                <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
+                <input type="text" name="batch" class="input-field" placeholder="Batch" required>
+                <input type="text" name="phone" class="input-field" placeholder="Phone" required>
+                <input type="checkbox" class="check-box">
+                <span>Remember Password</span>
+                <button type="submit" class="submit-btn">Submit</button>
+                <br>
+                <center> <a href="{% url 'login' %}" class="signup-image-link">I am already member</a> </center>
+                <br>
+
+
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}
