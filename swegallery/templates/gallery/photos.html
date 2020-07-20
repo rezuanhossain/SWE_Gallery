@@ -11,17 +11,22 @@
                         <div class="container-fluid js-tm-page-content" data-page-no="1" data-page-type="gallery">
                             <div class="tm-img-gallery-container">
                                 <div class="tm-img-gallery gallery-one">
+
                                 <!-- Gallery One pop up connected with JS code below -->
+                                    {% if gallery_list %}
+                                        {% for listing in gallery_list %}
                                     <div class="grid-item">
                                         <figure class="effect-sadie">
-                                            <img src="gallery/img/tm-img-01-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <img src="{{ listing.photo_main.url }}" alt="Image" class="img-fluid tm-img">
                                             <figcaption>
-                                                <h2 class="tm-figure-title">Image <span><strong>One</strong></span></h2>
-                                                <p class="tm-figure-description">Set true or false in HTML script tag for this page black and white.</p>
-                                                <a href="gallery/img/tm-img-01.jpg">View more</a>
+                                                <h2 class="tm-figure-title">{{ listing.event_name }}</h2>
+                                                <p class="tm-figure-description">{{ listing.description }}</p>
+                                                <a href="{{ listing.photo1.url }}">View more</a>
                                             </figcaption>
                                         </figure>
                                     </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
