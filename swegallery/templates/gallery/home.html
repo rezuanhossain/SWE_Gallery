@@ -1,0 +1,24 @@
+{% extends 'gallery/base.html' %}
+{% block title %} {{ block.super }}{% endblock %}
+{% block content %}
+
+<section class="ftco-section-2">
+    <div class="photograhy">
+        <div class="row no-gutters">
+        {% if gallery_list %}
+            {% for list in gallery_list %}
+            <div class="col-md-4 ftco-animate">
+                <a href="{{ list.photo_main.url }}" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url({{ list.photo_main.url }});">
+                    <div class="overlay"></div>
+                    <div class="text text-center">
+                        <h3>{{ list.event_name }}</h3>
+                        <span class="tag">{{ list.description }}</span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

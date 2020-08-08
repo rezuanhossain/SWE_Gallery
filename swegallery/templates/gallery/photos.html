@@ -1,37 +1,40 @@
 {% extends 'gallery/base.html' %}
 
 {% block content %}
-    {% include 'gallery/navbar.html' %}
+<section class="ftco-section bg-light ftco-bread">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center">
+  <div class="col-md-9 ftco-animate">
+    <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>Gallery</span></p>
+    <h1 class="mb-3 bread">Galleries</h1>
+    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+  </div>
+        </div>
+    </div>
+</section>
 
-<ul class="cd-hero-slider">
-
-                <!-- Page 1 Gallery One -->
-                <li class="selected">
-                    <div class="cd-full-width">
-                        <div class="container-fluid js-tm-page-content" data-page-no="1" data-page-type="gallery">
-                            <div class="tm-img-gallery-container">
-                                <div class="tm-img-gallery gallery-one">
-
-                                <!-- Gallery One pop up connected with JS code below -->
-                                    {% if gallery_list %}
-                                        {% for listing in gallery_list %}
-                                    <div class="grid-item">
-                                        <figure class="effect-sadie">
-                                            <img src="{{ listing.photo_main.url }}" alt="Image" class="img-fluid tm-img">
-                                            <figcaption>
-                                                <h2 class="tm-figure-title">{{ listing.event_name }}</h2>
-                                                <p class="tm-figure-description">{{ listing.description }}</p>
-                                                <a href="{{ listing.photo1.url }}">View more</a>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
+<section class="ftco-section-2">
+    <div class="photograhy">
+        <div class="row no-gutters">
+            {% if gallery_list %}
+                {% for list in gallery_list %}
+            <div class="col-md-4 ftco-animate">
+                <a href="{{ list.photo_main.url }}" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url({{ list.photo_main.url }});">
+                    <div class="overlay"></div>
+                    <div class="text text-center">
+                        <h3>Work 01</h3>
+                        <span class="tag">Model</span>
                     </div>
-                </li>
-</ul>
+                </a>
+            </div>
+                {% endfor %}
+            {% endif %}
+
+
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock %}
