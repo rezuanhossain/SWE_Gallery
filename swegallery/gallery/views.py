@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from gallery.models import Gallery,all_images,Contact
+from gallery.models import Gallery,all_images,Contact,Event
 
 
 def home(request):
@@ -41,8 +41,26 @@ def contact(request):
         else:
             obj= Contact(name=name,email=email,subject=subject,message=message)
             obj.save()
+            messages.success(request,'Successfully Send')
         return HttpResponseRedirect(reverse('contact'))
 
 
 
     return render(request, 'gallery/contact.html')
+
+def event(request):
+    events_info = Event.objects.all()
+    paginator = Paginator(events_info, 2)
+    page = request.GET.get('page')
+    page_listings = paginator.get_page(page)
+    context = {
+        'events_info':page_listings
+    }
+    return render(request, 'gallery/events.html',context)
+
+def event_details(request,id):
+    event_detials=Event.objects.get(id=id)
+    context = {
+        'event_detials': event_detials
+    }
+    return render(request, 'gallery/event.html', context)

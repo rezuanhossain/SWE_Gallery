@@ -1,5 +1,5 @@
 from django.contrib import admin
-from gallery .models import Gallery,all_images,Contact
+from gallery .models import Gallery,all_images,Contact,Event
 # Register your models here.
 
 
@@ -37,3 +37,12 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(all_images)
 class PostImageAdmin(admin.ModelAdmin):
     pass
+
+
+class EventAdmin(admin.ModelAdmin):
+    class Meta:
+        model= Event
+    list_display = ['id', 'name']
+    list_display_links = ['id', 'name']
+
+admin.site.register(Event, EventAdmin)

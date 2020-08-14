@@ -1,0 +1,72 @@
+{% extends 'gallery/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %}Events | {{ block.super }}{% endblock %}
+{% block content %}
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    {% if events_info %}
+                        {% for foo in events_info %}
+                        <div class="col-md-6">
+                            <div class="blog-entry ftco-animate">
+                                    <a href="{% url 'event_detials' foo.id %}" class="img img-2" style="background-image: url({{ foo.image.url }});"></a>
+                                    <div class="text text-2 pt-2 mt-3">
+                                        <div class="meta-wrap">
+                                            <p class="meta">
+                                            <span>{{ foo.date | naturalday }}</span>
+                                            </p>
+                                         </div>
+                                        <h3 class="mb-2"><a href="{% url 'event_detials' foo.id %}">{{ foo.name }}</a></h3>
+                                     </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+                    <!-- END-->
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            {% if events_info.has_other_pages %}
+                            <ul>
+                            {% if events_info.has_previous %}
+
+                                <li><a href="?page={{ events_info.previous_page_number }}">&raquo;</a></li>
+                                {% else %}
+                                <li><a>&laquo;</a></li>
+                                {% endif %}
+                            {% for i in events_info.paginator.page_range %}
+                                {% if events_info.number == i %}
+                                 <li><a>{{ i }}</a></li>
+                                {% else %}
+                                 <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+
+                            {% endfor %}
+
+                            {% if events_info.has_next %}
+                                <li><a href="?page={{ events_info.next_page_number }}">&raquo;</a></li>
+
+                                {% else %}
+                                <li><a href="#">&raquo;</a></li>
+                            {% endif %}
+
+                            </ul>
+
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

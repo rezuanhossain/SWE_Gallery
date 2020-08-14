@@ -1,0 +1,26 @@
+{% extends 'gallery/base.html' %}
+
+{% block title %}Event Detail | {{ block.super }}{% endblock %}
+{% block content %}
+<section class="ftco-section">
+	    	<div class="container">
+
+	    		<div class="row">
+	    			<div class="col-lg-8 ftco-animate">
+                        <p>
+						  <img src="{{ event_detials.image.url }}" alt="" class="img-fluid">
+						</p>
+						<h2 class="mb-3 font-weight-bold">{{ event_detials.name }}</h2>
+						<p>{{ event_detials.desc }}</p>
+
+
+
+
+	                </div>
+                </div>
+
+
+
+            </div>
+</section>
+{% endblock %}

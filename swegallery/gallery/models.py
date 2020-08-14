@@ -40,3 +40,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.subject
+
+class Event(models.Model):
+    image=models.ImageField(upload_to='photos/%y/%m/%d')
+    name=models.CharField(max_length=250)
+    date=models.DateField(auto_now_add=True)
+    desc=models.TextField()
+
+    def __str__(self):
+        return self.name
