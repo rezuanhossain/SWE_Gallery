@@ -8,14 +8,17 @@ from gallery.models import Gallery,all_images,Contact,Event
 
 
 def home(request):
-    gallery_list = Gallery.objects.all()
-    paginator = Paginator(gallery_list,10)
-    page = request.GET.get('page')
-    page_listings = paginator.get_page(page)
-    context = {
-        'gallery_list':page_listings
-    }
-    return render(request,'gallery/home.html',context)
+    if request.session.has_key('logged'):
+        gallery_list = Gallery.objects.all()
+        paginator = Paginator(gallery_list,10)
+        page = request.GET.get('page')
+        page_listings = paginator.get_page(page)
+        context = {
+            'gallery_list':page_listings
+        }
+        return render(request,'gallery/home.html',context)
+    else:
+        return HttpResponseRedirect(reverse('login'))
 
 
 def home_detail(request):

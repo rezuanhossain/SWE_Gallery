@@ -14,7 +14,7 @@
                 {% csrf_token %}
                 <input type="text" name="userid" class="input-field" placeholder="User ID" required>
                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                <input type="email" name="email" class="input-field" placeholder="Email" required>
+                <input type="email" name="email" class="input-field" pattern="[a-z0-9._%+-]+@+diu.+edu.+bd" placeholder="Email" required>
 
                 <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
                 <input type="text" name="batch" class="input-field" placeholder="Batch" required>

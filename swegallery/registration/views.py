@@ -14,6 +14,7 @@ def login(request):
         count = User.objects.filter(email=email, password=password).count()
 
         if count > 0:
+            request.session['logged']=True
 
             return HttpResponseRedirect(reverse('home'))
         else:
@@ -44,6 +45,10 @@ def registration(request):
                     obj.save()
                     return HttpResponseRedirect(reverse('login'))
     return render (request,'registration/register.html')
+
+def logout(request):
+    del request.session['logged']
+    return HttpResponseRedirect(reverse('login'))
 
 
 
