@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x6ritxduvr_%v@fgcob0mv+l=x3(%)g5)276*h&q+$+h6#an81'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['swe-photo-gallery.herokuapp.com','127.0.0.1']
 
 
 # Application definition

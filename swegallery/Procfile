@@ -1,0 +1,1 @@
+web: gunicorn swegallery.wsgi --log-file -
